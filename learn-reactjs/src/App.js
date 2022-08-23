@@ -1,14 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import {
-  Container,
-  Form,
-  Button,
-  Stack,
-  Card,
-  Row,
-  Col,
-} from "react-bootstrap";
+import Add from "./Add";
+import { Container } from "react-bootstrap";
+import List from "./List";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -36,62 +30,23 @@ function App() {
     setTodoName(data);
   };
 
-  console.log(todoList);
-
   return (
     <Container>
       <h1 className="text-center mt-5">Todo Web App</h1>
       {/* Input Todo  */}
-      <Card className="mt-5">
-        <Card.Body>
-          <Stack direction="horizontal" gap={3}>
-            <Form.Control
-              type="text"
-              placeholder="Masukkan Todo"
-              onChange={handleChangeTodoName}
-              value={todoName}
-            />
-            <Button onClick={addTodo}>Add</Button>
-          </Stack>
-        </Card.Body>
-      </Card>
+      <Add
+        handleChangeTodoName={handleChangeTodoName}
+        todoName={todoName}
+        addTodo={addTodo}
+      />
 
       {/* List Todo */}
       <div className="mt-5">
-        {todoList.map((value, index) => {
-          return (
-            <Card className="mt-2">
-              <Card.Body>
-                <Row>
-                  {/* Nama Todo */}
-                  <Col>
-                    <h3>{value.todoName}</h3>
-                  </Col>
-                  {/* Button Todo */}
-                  <Col xl="1">
-                    <Button
-                      onClick={() => {
-                        todoBerhasil(index);
-                      }}
-                      variant={value.status ? "success" : "warning"}
-                    >
-                      {value.status ? "Selesai" : "Belum Selesai"}
-                    </Button>
-                  </Col>
-                </Row>
-                <Button
-                  variant="danger"
-                  className="mt-2"
-                  onClick={() => {
-                    deleteTodo(index);
-                  }}
-                >
-                  Hapus
-                </Button>
-              </Card.Body>
-            </Card>
-          );
-        })}
+        <List
+          todoList={todoList}
+          todoBerhasil={todoBerhasil}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </Container>
   );
