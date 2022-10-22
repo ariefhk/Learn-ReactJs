@@ -1,5 +1,6 @@
 // How it works
-if (true) {
+let val = true;
+if (val) {
   console.log("run the code");
 }
 
@@ -19,9 +20,9 @@ if (shopOpen === "open") {
 }
 
 // 2. If-Else if-Else
-var shopOpen = "close";
+var shopOpenn = "close";
 var minuteRemainingToOpen = 5;
-if (shopOpen === "open") {
+if (shopOpenn === "open") {
   console.log("I'll will buy tempe and egg");
 } else if (minuteRemainingToOpen <= 5) {
   console.log("The mini market will open soon, I'll waiting");
@@ -30,17 +31,18 @@ if (shopOpen === "open") {
 }
 
 // 3. Nested If
-var shopOpen = "open";
+var shopOpennn = "open";
 var tempe = "soldout";
 var egg = "soldout";
-if (shopOpen == "open") {
+if (shopOpennn == "open") {
   console.log("I'll will buy tempe and egg");
   if (tempe == "soldout" || egg == "soldout") {
     console.log("my shopping is incomplete");
-  } else if (tempe == "soldout") {
-    console.log("tempe is empty");
-  } else if (egg == "soldout") {
-    console.log("egg is empty");
+    if (tempe == "soldout") {
+      console.log("tempe is empty");
+    } else if (egg == "soldout") {
+      console.log("egg is empty");
+    }
   }
 } else {
   console.log("The mini market is closed, I'm home again");
